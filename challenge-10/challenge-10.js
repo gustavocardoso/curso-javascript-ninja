@@ -10,10 +10,10 @@
   das variáveis. Analise o que está sendo impresso no console para saber como
   resolver o problema corretamente.
   */
-  var five = new Number('5').valueOf();
+  var five = Number('5');
   console.log( five + ' é número?', typeof five === 'number' );
 
-  var concat = new String(10) + new String(10);
+  var concat = String(10) + 10;
   console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
   /*
@@ -60,7 +60,8 @@
   */
   
   function isOperatorValid(operator) {
-    return (operator === '+' || operator === '-' || operator === '*' || operator === '/' || operator === '%') ? true : false;
+    // return (operator === '+' || operator === '-' || operator === '*' || operator === '/' || operator === '%');
+    return !!operation[operator];
   }
 
   /*
@@ -86,25 +87,7 @@
         return false;
       }
 
-      if (operator === '+') {
-        return operation['+'](x, y);
-      }
-
-      if (operator === '-') {
-        return operation['-'](x, y);
-      }
-
-      if (operator === '*') {
-        return operation['*'](x, y);
-      }
-
-      if (operator === '/') {
-        return operation['/'](x, y);
-      }
-
-      if (operator === '%') {
-        return operation['%'](x, y);
-      }
+      return operation[operator](x, y);
     }
   }
 
@@ -141,7 +124,7 @@
   
   var number1 = 0;
   var number2 = 0;
-  var operationSignal = '';
+  var operationSignal;
 
   /*
   PASSO 2:
